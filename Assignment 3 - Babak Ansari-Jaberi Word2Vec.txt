@@ -1,0 +1,44 @@
+Assignment 3 - Babak Ansari-Jaberi Word2Vec
+
+______________________________________________________________________________
+Question 1: Increase the skip window.  Looking at the training error and the closest words, does the model seem to get better or worse? Explain why. (3 marks)
+
+Increase skip window will make model to have more average loss meaning it perform worst in term of loss but make it become less generalized. The more skip windows size, decreases the probability of words to occur together in sentences to be related in a same context.
+
+Windows size = 1:
+	Average loss at step  100000 :  4.7
+	Nearest to when: if, although, while, circ, before, after, lemmy, where
+
+Windows size = 5:
+	Average loss at step  100000 :  5.10
+	Nearest to its: the, their, a, an, this, with, in, which
+
+Windows size = 25:
+	Average loss at step  100000 :  5.17
+	Nearest to five: three, four, two, one, seven, six, zero, eight
+______________________________________________________________________________
+Question 2: Research and explain NCE loss. (3 marks)
+
+
+Noise Contrastive Estimation is a way of learning a data distribution by comparing it against a noise distribution, which is defined. 
+
+The basic idea is to train a logistic regression classifier to discriminate between samples from the data distribution and samples from some “noise” distribution, based on the ratio of probabilities of the sample under the model and the noise distribution
+
+______________________________________________________________________________
+Question 3: Why replace rare words with UNK rather than keeping them? (2 marks)
+
+Unknown works (UNKs) have not much impact in determining the context as the probability of them to be beside another word is low compare to other words.
+
+______________________________________________________________________________
+Question 4: If you run the model more than once the t-SNE plot looks different each time.  Why? (2 marks)
+
+The word vectors (hidden layer weights) are created randomly at the beginning of the training and could result in different outputs. But the relation of the vectors (words) in the context are the important information that are preserved.
+______________________________________________________________________________
+Question 5: What happens to accuracy if you set vocabulary_size to 500?  Explain why. (3 marks)
+
+The accuracy of the model will be reduced if we decrease vocabulary size as it generates more unknowns (UNKs) so probability of words nearby is becoming less accurate.
+
+______________________________________________________________________________
+Question 6: You may see antonyms like “less” and “more” next to each other in the t-SNE.  How does that make sense rather than them being at opposite ends of the plot? (2 marks)
+
+Antonyms like "less" and "more" are usually being use in a similar context so they would be closer to each other in Word2Vec 
